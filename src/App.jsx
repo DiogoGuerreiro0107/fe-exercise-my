@@ -1,35 +1,34 @@
 import React, { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Login from './Login.jsx'
+import Profile from './Profile.jsx'
 
 function App () {
-  const [count, setCount] = useState(0)
+  const [isLogged, setIsLogged] = useState(false)
+  const [user, setUser] = useState({
+    "id": "",
+    "email": "",
+    "password": "",
+    "firstName": "",
+    "lastName": ""
+  })
 
-  return (
+  async function logIn(user) {
+    setIsLogged(true);
+    setUser(user);
+  }
+
+  if(!isLogged)
+    return (
+      <>
+        <Login logIn={logIn} />
+      </>
+    )
+  else return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Profile user={user} />
     </>
-  )
+    )
 }
 
 export default App
