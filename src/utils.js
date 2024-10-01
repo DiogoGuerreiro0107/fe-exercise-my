@@ -1,12 +1,14 @@
-export default async function fetchJSONData(directory, query) {
-    let result;
-
+export default async function fetchJSONServer(directory, query) {
     let url = "http://localhost:5000" + directory;
     if (query.length > 0)
         url += "?"
     for (let q of query)
         url += q[0] + "=" + (q[1] == "" ? " " : q[1]) + "&"
-    console.log("url: ", url)
+    return fetchJSONData(url);
+}
+
+async function fetchJSONData(url) {
+    let result;
     await fetch(url)
       .then((res) => {
           if (!res.ok) {
@@ -15,5 +17,5 @@ export default async function fetchJSONData(directory, query) {
           }
           return res.json();
       }).then((data) => result = data)
-    return result
+    return result;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import Login from './Login.jsx'
+import Header from './Header.jsx'
 import Profile from './Profile.jsx'
 
 function App () {
@@ -13,9 +14,20 @@ function App () {
     "lastName": ""
   })
 
-  async function logIn(user) {
+  function logIn(user) {
     setIsLogged(true);
     setUser(user);
+  }
+
+  function logOut(user) {
+    setIsLogged(false);
+    setUser({
+      "id": "",
+      "email": "",
+      "password": "",
+      "firstName": "",
+      "lastName": ""
+    });
   }
 
   if(!isLogged)
@@ -26,6 +38,7 @@ function App () {
     )
   else return (
     <>
+      <Header logOut={logOut} />
       <Profile user={user} />
     </>
     )

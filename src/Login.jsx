@@ -1,5 +1,5 @@
 import React from 'react'
-import fetchJSONData from "./utils.js"
+import fetchJSONServer from "./utils.js"
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
     }
 
     async testLogin(email, password) {
-      const user = await fetchJSONData("/users", [["email", email], ["password", password]]);
+      const user = await fetchJSONServer("/users", [["email", email], ["password", password]]);
       console.log("user: ", user)
       if (user.length == 0)
         return false;
@@ -45,16 +45,27 @@ class LoginForm extends React.Component {
   
     render() {
       return (
-        <>
+        <div className="container">
             <h1>Login</h1>
-            <form onSubmit={this.handleSubmit}>
-                <label>email</label>
-                <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} />
-                <label>password</label>
-                <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
-                <button type="submit">Login</button>
+            <form className="box login-form" onSubmit={this.handleSubmit}>
+              <div className="control has-icons-left">
+                <input className="input" type="email" placeholder="Email"  name="email" value={this.state.email} onChange={this.handleInputChange} />
+                <span className="icon is-small is-left">
+                  <i className="fas fa-envelope"></i>
+                </span>
+              </div>
+              <div className="control has-icons-left">
+                <input className="input" type="password" placeholder="Password"  name="password" value={this.state.password} onChange={this.handleInputChange} />
+                <span className="icon is-small is-left">
+                  <i className="fa-solid fa-key"></i>
+                </span>
+              </div>
+              <div className="field is-grouped is-grouped-right">
+                <button className="button is-primary is-rounded" type="submit">Login</button>
+              </div>
             </form>
-        </>
+            
+        </div>
       );
     }
   }
