@@ -1,15 +1,29 @@
 .login-form {
     min-width: 200px;
     max-width: 450px;
+    width: 100%;
     margin: auto;
     padding: 10px;
 }
 
-.login-form > div {
+.login-form > * {
     margin: 10px;
 }
 
 .main {
     width: 100%;
     min-height: 100vh;
+}
+
+.profile-me {
+    margin: 10%;
+    text-align: center;
+}
+
+.profile-me figure {
+    margin: auto;
+}
+
+.post-user {
+    height: 100%;
 }

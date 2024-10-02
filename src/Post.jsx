@@ -22,7 +22,7 @@ export default class Post extends React.Component {
   render() {
     const date = this.renderPostedAt(this.props.post.postedAt);
     return (
-      <div className="card">
+      <div className="card m-4">
         <div className="card-content">
           <div className="media">
             <div className="media-left">
@@ -33,15 +33,15 @@ export default class Post extends React.Component {
                 />
               </figure>
             </div>
-            <div className="media-content">
-              <p className="title is-4">{this.state.user.firstName} {this.state.user.lastName}</p>
+            <div className="media-content post-user"> 
+              <p className="title is-4">{this.state.user.firstName} {this.state.user.lastName} </p>
+              <time className="subtitle is-7" dateTime={this.props.post.postedAt}>{date}</time>
             </div>
           </div>
-
+          <hr />
+          <p className="title is-4">{this.props.post.title}</p>
           <div className="content">
             {this.props.post.text}
-            <br />
-            <time dateTime={this.props.post.postedAt}>{date}</time>
           </div>
         </div>
       </div>

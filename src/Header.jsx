@@ -10,7 +10,7 @@ export default class Header extends React.Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item">
+            <a className="navbar-item is-active">
               Profile
             </a>
           </div>
