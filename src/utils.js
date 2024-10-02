@@ -7,7 +7,7 @@
  * where the first element of the array is the name of the paramter and the second element
  * is the number or string that refers to the paramter.
  * Example: [["id", "3"], ["name", "John"]].
- * @returns {Array.<any>} An array of objects from the json required.
+ * @returns {Promise} Returns an array of objects from the json required.
 */
 export default async function fetchJSONServer(directory, query) {
     let url = "http://localhost:5000" + directory;
@@ -22,7 +22,7 @@ export default async function fetchJSONServer(directory, query) {
  * Method used to get a JSON object from a JSON file at the given path.
  *
  * @param {string} url The path to the given JSON file.
- * @returns {any} An object from the json required.
+ * @returns {Promise} An object from the json required.
  */
 async function fetchJSONData(url) {
     let result;

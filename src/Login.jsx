@@ -49,8 +49,8 @@ export default class LoginForm extends React.Component {
    * Returns false, if there is no user with the given email and password, or an object User, if it does exist on the
    * data base.
   */
-  testLogin(email, password) {
-    const user = fetchJSONServer("/users", [["email", email], ["password", password]]);
+  async testLogin(email, password) {
+    const user = await fetchJSONServer("/users", [["email", email], ["password", password]]);
     if (user.length == 0)
       return false;
     return user[0];
@@ -62,8 +62,8 @@ export default class LoginForm extends React.Component {
    * @param {string} email The user's email.
    * @returns {boolean} Returns false, if there is no user with the given email. Otherwise returns true.
   */
-   testEmail(email) {
-    const user = fetchJSONServer("/users", [["email", email]]);
+   async testEmail(email) {
+    const user = await fetchJSONServer("/users", [["email", email]]);
     return user.length > 0;
   }
 
