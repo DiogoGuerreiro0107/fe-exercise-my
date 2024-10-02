@@ -1,5 +1,5 @@
 import React from 'react'
-import fetchJSONServer from "./utils.js"
+import {fetchJSONServer} from "./utils.js"
 import Post from './Post.jsx'
 
 /**

@@ -1,5 +1,5 @@
 import React from 'react'
-import fetchJSONServer from "./utils.js"
+import {fetchJSONServer} from "./utils.js"
 
 /**
  * This class represents a React component that renders the login page.
