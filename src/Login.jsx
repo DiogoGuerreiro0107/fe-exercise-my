@@ -45,7 +45,7 @@ export default class LoginForm extends React.Component {
    *
    * @param {string} email The user's email.
    * @param {string} password The user's password.
-   * @returns {boolean | {{id: string, email: string, password: string, firstName: string, lastName: string}} User} 
+   * @returns {Promise.<boolean | {id: string, email: string, password: string, firstName: string, lastName: string} User>} 
    * Returns false, if there is no user with the given email and password, or an object User, if it does exist on the
    * data base.
   */
@@ -60,7 +60,7 @@ export default class LoginForm extends React.Component {
    * Method used to test if the given email exists in the data base.
    *
    * @param {string} email The user's email.
-   * @returns {boolean} Returns false, if there is no user with the given email. Otherwise returns true.
+   * @returns {Promise.<boolean>} Returns false, if there is no user with the given email. Otherwise returns true.
   */
    async testEmail(email) {
     const user = await fetchJSONServer("/users", [["email", email]]);
@@ -72,7 +72,7 @@ export default class LoginForm extends React.Component {
    *
    * @param {any} e The form submition event.
   */
-  handleSubmit(e) { 
+  async handleSubmit(e) { 
     e.preventDefault();
 
     this.setState({
@@ -80,13 +80,13 @@ export default class LoginForm extends React.Component {
       ["passwordError"]: false
     });
 
-    const user = this.testLogin(this.state.email, this.state.password);
+    const user = await this.testLogin(this.state.email, this.state.password);
     if (user) {
       this.props.logIn(user);
       return;
     }
 
-    const testEmail = this.testEmail(this.state.email);
+    const testEmail = await this.testEmail(this.state.email);
     if (!testEmail)
       this.setState({
         ["emailError"]: true

@@ -44,6 +44,7 @@ export default class Profile extends React.Component {
    * @returns {ReactNode} The rendering of the component.
   */
   render() {
+    console.log()
     return (
       <div className="columns">
         <div className="column is-3">

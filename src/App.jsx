@@ -20,7 +20,7 @@ function App () {
   /**
    * Method used to log in a valid user.
    *
-   * @param {{{id: string, email: string, password: string, firstName: string, lastName: string}} User} 
+   * @param {{id: string, email: string, password: string, firstName: string, lastName: string} User} user
    * A valid user.
   */
   function logIn(user) {
@@ -31,7 +31,7 @@ function App () {
   /**
    * Method used to log out the user.
    *
-   * @param {{{id: string, email: string, password: string, firstName: string, lastName: string}} User} 
+   * @param {{{id: string, email: string, password: string, firstName: string, lastName: string}} User} user
    * A valid user.
   */
   function logOut(user) {
