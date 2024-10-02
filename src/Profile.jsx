@@ -2,7 +2,16 @@ import React from 'react'
 import fetchJSONServer from "./utils.js"
 import Post from './Post.jsx'
 
+/**
+ * This class represents a React component that renders the profile page.
+ * Requires an User object, as "user".
+ */
 export default class Profile extends React.Component {
+  /**
+   * Constructor for Profile.
+   *
+   * @param {any} props The props for the Profile. Must contain an User object as "user".
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -11,22 +20,29 @@ export default class Profile extends React.Component {
     this.loadPosts = this.loadPosts.bind(this);
   }
 
+  /**
+   * Method that loads the user posts from the data base.
+  */
   async loadPosts() {
-    // const data = await fetchJSONServer("../db/data.json");
-    // const posts = data.posts;
-    // let user_posts = [];
-    // for (let post of posts)
-    //   if (post.userId == this.props.user.id)
-    //     user_posts.push(post);
     const user_posts = await fetchJSONServer("/posts", [["userId", this.props.user.id]])
     user_posts.sort((a, b) => -a.postedAt.localeCompare(b.postedAt))
     this.setState({ posts: user_posts });
   }
-
+  
+  /**
+   * React method that executes before rendering. It is used to get something that
+   * may require asynchronous execution, like a fetch, that is being used in this
+   * case to get the user posts.
+  */
   componentDidMount() {
     this.loadPosts();
   }
 
+  /**
+   * React method for the rendering of the component.
+   *
+   * @returns {ReactNode} The rendering of the component.
+  */
   render() {
     return (
       <div className="columns">

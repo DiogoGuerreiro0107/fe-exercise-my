@@ -4,6 +4,9 @@ import Login from './Login.jsx'
 import Header from './Header.jsx'
 import Profile from './Profile.jsx'
 
+/**
+ * A React component that represents the entire app.
+ */
 function App () {
   const [isLogged, setIsLogged] = useState(false)
   const [user, setUser] = useState({
@@ -14,11 +17,23 @@ function App () {
     "lastName": ""
   })
 
+  /**
+   * Method used to log in a valid user.
+   *
+   * @param {{{id: string, email: string, password: string, firstName: string, lastName: string}} User} 
+   * A valid user.
+  */
   function logIn(user) {
     setIsLogged(true);
     setUser(user);
   }
 
+  /**
+   * Method used to log out the user.
+   *
+   * @param {{{id: string, email: string, password: string, firstName: string, lastName: string}} User} 
+   * A valid user.
+  */
   function logOut(user) {
     setIsLogged(false);
     setUser({
