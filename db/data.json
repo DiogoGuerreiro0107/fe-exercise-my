@@ -99,6 +99,13 @@
       "text": "test",
       "userId": "1",
       "postedAt": "2024-10-03T21:27:35"
+    },
+    {
+      "id": "9d11",
+      "title": "coll post",
+      "text": "hiiiiiiiiiiiiiiii",
+      "userId": "3",
+      "postedAt": "2024-10-03T21:49:48"
     }
   ]
 }
