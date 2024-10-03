@@ -25,10 +25,9 @@ export default class LoginForm extends React.Component {
   }
 
   /**
-   * Method that gets a string representing a date and
-   * turns it into the desired format to render.
+   * Method that handles the changes on the inputs, from the event onChange, changing its corresponding value.
    *
-   * @param {any} event Represents a date in the format "YYYY-MM-DDTHH:MM:SS".
+   * @param {Event} event An onChange event from an input.
   */
   handleInputChange(event) {
     const target = event.target;
@@ -70,7 +69,7 @@ export default class LoginForm extends React.Component {
   /**
    * Method that handles the log in form submition.
    *
-   * @param {any} e The form submition event.
+   * @param {Event} e The form submition event.
   */
   async handleSubmit(e) { 
     e.preventDefault();
@@ -146,7 +145,7 @@ export default class LoginForm extends React.Component {
     return (
       <div className="hero is-link is-fullheight">
         <div className="hero-body">
-          <form className="box login-form" onSubmit={this.handleSubmit}>
+          <form className="box login-form forms" onSubmit={this.handleSubmit}>
             <h1 className="title">Log in please</h1>
             {emailInput}
             {passwordInput}

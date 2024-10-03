@@ -1,6 +1,7 @@
 import React from 'react'
 import {fetchJSONServer} from "./utils.js"
 import Post from './Post.jsx'
+import PostModal from './PostModal.jsx'
 
 /**
  * This class represents a React component that renders the profile page.
@@ -44,7 +45,13 @@ export default class Profile extends React.Component {
    * @returns {ReactNode} The rendering of the component.
   */
   render() {
-    console.log()
+    const createPost = (
+      <p className="title">
+        <span className="icon">
+          <i className="fa-regular fa-square-plus"></i>
+        </span>
+        <span> Create a new post here!</span>
+      </p>);
     return (
       <div className="columns">
         <div className="column is-3">
@@ -56,9 +63,15 @@ export default class Profile extends React.Component {
           </div>
         </div>
         <div className="column m-4">
+          <section className="hero is-primary">
+            <div className="hero-body">
+              <PostModal post={this.props.post} linkClasses={""} linkText={createPost} userId = {this.props.user.id} />  
+            </div>
+          </section>
+          <hr/>
           <h1 className="title is-2 is-underlined">My Posts</h1>
           <div>
-            {this.state.posts.map((p) => <div key={p.postId}> <Post post = {p} /> </div>)}
+            {this.state.posts.map((p) => <div key={p.id}> <Post post = {p} userId = {this.props.user.id} /> </div>)}
           </div>
         </div>
       </div>
